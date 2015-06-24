@@ -1,0 +1,62 @@
+	<!-- 
+	
+	currency
+	You can write currency just by itself to get dollar amounts for values. You can also add a colon and a symbol
+	to change the symbol for the currency, replacing the dollar sign.
+
+	date
+	Using just the word date puts the date information in the standard format. Adding a colon and some additional
+	formatting information you can change the date's format. Like putting :'yyyy' after the date, it will display
+	just the four-digit year. Can do :'MM' for month or :'yyyy-MM' for year and month. Can even use :'medium'
+
+	uppercase
+	Puts everything in uppercase
+
+	lowercase
+	Puts everything in lowercase
+
+	limitTo
+	Can be used to limit the number of iterations performed by the ng-repeat. limitTo:2 will limit it to 2.
+
+	orderBy
+	Can be used to order by different variables of objects, like orderBy:'name' to order by the names of the
+	customers below.
+
+	You can setup an ng-click on the table headers and a sortBy variable to make the table sort by the clicked
+	header. The reverse option allows the information to be displayed in ascending or descending order.
+
+	filter
+	Allows you to filter by what is in a model, like the customerFilter model, for example. By default, so 
+	just with your model as customerFilter, it will filter on all of the variables of the object. But you can 
+	restrict it to customerFilter.name to only keep the name to filter on. 
+	
+	 -->
+		<h2>
+			{{ appSettings.title }}
+		</h2>
+
+		Filter: <input type="text" data-ng-model="customerFilter.name" />
+		<br /><br />
+
+		<table class="table table-striped">
+			<tr>
+				<th data-ng-click="doSort('name')">Name</th>
+				<th data-ng-click="doSort('city')">City</th>
+				<th data-ng-click="doSort('orderTotal')">Order Total</th>
+				<th data-ng-click="doSort('joined')">Joined</th>
+				<th>&nbsp;</th>
+				<th>&nbsp;</th>
+			</tr>
+			<tr ng-repeat="cust in customers | filter:customerFilter | orderBy:sortBy:reverse" class="repeat-animation">
+				<td>{{ cust.name | uppercase }}</td>
+				<td>{{ cust.city | lowercase }}</td>
+				<td>{{ cust.orderTotal | currency:'y' }}</td> 
+				<td>{{ cust.joined | date:'longDate' }}</td>
+				<td><a href="#/orders/{{ cust.id }}">View Orders</td>
+				<td class="center"><span class="glyphicon glyphicon-remove delete" ng-click="deleteCustomer(cust.id)"></span></td>
+			</tr>
+		</table>
+		<br />
+		<span>Total Customers: {{ customers.length }}</span>
+		<br /><br />
+		<footer>Version: {{ appSettings.version }}</footer>

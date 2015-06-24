@@ -1,0 +1,29 @@
+.red 
+{
+	color: red;
+}
+
+.navy 
+{
+	color: navy;
+}
+
+table 
+{
+	width: 500px;
+}
+
+th 
+{
+	text-align: left;
+	background-color: #EFEFEF;
+}
+
+.center {
+	text-align: center;
+}
+
+.delete {
+	color: red;
+	cursor: pointer;
+}
