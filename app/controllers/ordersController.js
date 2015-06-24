@@ -12,7 +12,7 @@
 					$scope.customer = customer;
 				})
 				.error(function(data, status, headers, config) {
-					//handle error
+					console.log(data);
 				});
 
 			// Below is the old call without ajax

@@ -11,7 +11,7 @@
 					getOrdersTotal();
 				})
 				.error(function(data, status, headers, config) {
-					//Handle error
+					console.log(data);
 				});
 		}
 
